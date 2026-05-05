@@ -1,0 +1,41 @@
+[Experiment Config]
+model: heatmap
+data_dir: C:\Code\workspace\data\ARCADE
+output_dir: .\outputs\heatmap_new
+test_only: False
+epochs: 250
+batch_size: 8
+num_workers: 4
+lr: 0.0010
+weight_decay: 0.0001
+optimizer: AdamW
+scheduler: ReduceLROnPlateau(factor=0.2, patience=5)
+early_stopping: monitor=val_f1, patience=30
+seg_loss: focal_tversky(alpha=0.3, beta=0.7, gamma=0.75)
+seed: 14
+heatmap_loss: 0.30 * (0.50 * dice + 0.50 * weighted_bce(pos_weight=2.00))
+seg_threshold: 0.50
+heatmap_pred_threshold: 0.35
+heatmap_target_threshold: 0.25
+inference_time_per_image_sec: 0.038480
+checkpoint_monitor: val_arcade_polygon_instance_f1
+best_epoch: 93
+best_checkpoint_score: 0.4111
+
+[Test Stenosis ARCADE Official Polygon-Instance Metric]
+Total Mean F1: 0.4459
+Evaluation note: COCO polygon instance F1, matching the official ARCADE stenosis evaluator logic.
+
+[Test Stenosis Segmentation]
+IoU: 0.4637
+Precision: 0.5693
+Recall: 0.7455
+F1: 0.6072
+Image-wise F1: 0.6072
+
+[Test Stenosis Heatmap]
+IoU: 0.5321
+Precision: 0.7001
+Recall: 0.7016
+F1: 0.6709
+Image-wise F1: 0.6709
