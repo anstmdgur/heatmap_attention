@@ -280,7 +280,7 @@ def test_and_save(loader, model, device, model_name, output_dir, arcade_annotati
                 add_mask_prediction(arcade_prediction, filename, raw_pred_mask)
             pred_mask = _binary_closing_numpy(raw_pred_mask, kernel_size=3)
 
-            gt_overlay = _mask_overlay(image_np, gt_mask)
+            gt_overlay = _mask_overlay(image_np, gt_mask, color=(0.05, 0.45, 0.95)) #gt 색 수정
             pred_overlay = _mask_overlay(image_np, pred_mask, color=(0.05, 0.45, 0.95))
             _save_three_panel(
                 os.path.join(seg_dir, stem),

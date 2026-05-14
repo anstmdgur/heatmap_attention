@@ -2,7 +2,7 @@
 model: baseline
 data_dir: C:\Code\workspace\data\ARCADE
 output_dir: .\outputs\baseline_new
-test_only: False
+test_only: True
 epochs: 250
 batch_size: 8
 num_workers: 4
@@ -17,7 +17,7 @@ heatmap_loss: none
 seg_threshold: 0.50
 heatmap_pred_threshold: 0.35
 heatmap_target_threshold: 0.25
-inference_time_per_image_sec: 0.036474
+inference_time_per_image_sec: 0.035514
 checkpoint_monitor: val_arcade_polygon_instance_f1
 best_epoch: 71
 best_checkpoint_score: 0.3530
